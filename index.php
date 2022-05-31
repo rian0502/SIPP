@@ -30,13 +30,13 @@
             <div class="bg">
                 <img src="bg5.jpg" class="cover" alt="">
                 <div class="content">
-                    <h2>Sistem Perpustakaan\</h2>
+                    <h2>Sistem Perpustakaan</h2>
                     <a href="daftarBuku.html" class="btn">Daftar Buku</a>
                 </div>
                 <div class="searchBox">
                     <div class="inputBx">
                         <p>Peminjam</p>
-                        <select name="nama">
+                        <select name="siswa">
                             <?php while($data = $stmt->fetch(PDO::FETCH_ASSOC)){?>
                                 <option value="<?php echo $data['id_siswa'] ?>"> <?php echo $data['nisn']." - ".$data['nama'] ?></option>
                             <?php } $stmt->closeCursor(); $con->destroyConnection(); ?>
@@ -44,15 +44,15 @@
                     </div>
                     <div class="inputBx">
                         <p>Buku</p>
-                        <input type="text">
+                        <input type="text" name="buku" required>
                     </div>
                     <div class="inputBx">
                         <p>Peminjaman</p>
-                        <input type="date">
+                        <input type="date" name="tgl_pjm" required>
                     </div>
                     <div class="inputBx">
                         <p>Pengembalian</p>
-                        <input type="date">
+                        <input type="date" name="tgl_bck" required>
                     </div>
                     <div class="inputBx">
                         <p class="white">_</p>

@@ -1,7 +1,7 @@
 <?php
 require_once "config.php";
 $con = new Connection();
-$stmt = $con->getKoneksi()->prepare("SELECT id_pinjam, s.nama, b.judul 
+$stmt = $con->getKoneksi()->prepare("SELECT id_pinjam, borrow_book, return_book, s.nama, b.judul 
                                                FROM siswa as s, buku as b, peminjaman as p
                                                WHERE p.id_buku = b.id_buku AND s.id_siswa = p.id_siswa");
 $stmt->execute();
@@ -29,7 +29,7 @@ $stmt->execute();
                     DATA PEMINJAM
                 </div>
                 <div class="card-body">
-                    <a href="TambahJurnal.php" class="btn btn-md btn-success" style="margin-bottom: 10px">TAMBAH
+                    <a href="index.php" class="btn btn-md btn-success" style="margin-bottom: 10px">TAMBAH
                         DATA</a>
                     <table class="table table-bordered" id="myTable">
                         <thead>
@@ -37,6 +37,8 @@ $stmt->execute();
                             <th scope="col">NO.</th>
                             <th scope="col">Nama Peminjam</th>
                             <th scope="col">Nama Buku</th>
+                            <th scope="col">Tgl. Pinjam</th>
+                            <th scope="col">Tgl. Pengembalian</th>
                             <th scope="col">Aksi</th>
                         </tr>
                         </thead>
@@ -48,9 +50,10 @@ $stmt->execute();
                                 <td><?php echo $index ?></td>
                                 <td><?php echo $row['nama'] ?></td>
                                 <td><?php echo $row['judul'] ?></td>
+                                <td><?php echo $row['borrow_book'] ?></td>
+                                <td><?php echo $row['return_book'] ?></td>
                                 <td class="text-center">
-                                    <a href="EditJurnal.php?id=<?php echo $row['id_pinjam'] ?>" class="btn btn-sm btn-primary">EDIT</a>
-                                    <a href="HapusJurnal.php?id=<?php echo $row['id_pinjam'] ?>" class="btn btn-sm btn-danger">HAPUS</a>
+                                    <a href="hapus_peminjaman.php?id=<?php echo $row['id_pinjam'] ?>" class="btn btn-sm btn-danger">HAPUS</a>
                                 </td>
                             </tr>
                         <?php $index++; } ?>
