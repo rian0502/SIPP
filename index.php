@@ -1,7 +1,7 @@
 <?php
     require_once "config.php";
-    $sql = "SELECT id_siswa, nisn, nama FROM siswa";
-    $exe = mysqli_query(Connection::getConnection(), $sql);
+    $sql = "SELECT * FROM siswa";
+    $execute = mysqli_query(Connection::getConnection(), $sql);
     
 ?>
 
@@ -35,13 +35,11 @@
             <div class="searchBox">
                 <div class="inputBx">
                     <p>Peminjam</p>
-                    <select name="nama" id="nama">
-                        <?php while ($row = mysqli_fetch_assoc()){ echo $row['nama'];?>
-                            <option value="<?php echo $row['id_siswa'] ?>">
-                                test
-                            </option>
+                    <select name="nama">
+                        <?php while($data = mysqli_fetch_assoc($execute)){?>
+                            <option value="<?php echo $data['id_siswa'] ?>"> <?php echo $data['nisn']." - ".$data['nama'] ?></option>
                         <?php } ?>
-                      </select>
+                    </select>
                 </div>
                 <div class="inputBx">
                     <p>Buku</p>
