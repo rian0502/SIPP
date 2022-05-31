@@ -1,8 +1,8 @@
 <?php
     require_once "config.php";
-    $sql = "SELECT * FROM siswa";
-    $execute = mysqli_query(Connection::getConnection(), $sql);
-    
+    $con = new Connection();
+    $stmt = $con->getKoneksi()->prepare("SELECT * FROM siswa");
+    $stmt->execute();
 ?>
 
 <!DOCTYPE html>
@@ -25,40 +25,42 @@
             </ul>
         </div>
     </header>
-    <div class="banner">
-        <div class="bg">
-            <img src="bg5.jpg" class="cover">
-            <div class="content">
-                <h2>Sistem Perpustakaan</h2>
-                <a href="daftarBuku.html" class="btn">Daftar Buku</a>
+    <form action="pinjaman.php" method="post">
+        <div class="banner">
+            <div class="bg">
+                <img src="bg5.jpg" class="cover" alt="">
+                <div class="content">
+                    <h2>Sistem Perpustakaan\</h2>
+                    <a href="daftarBuku.html" class="btn">Daftar Buku</a>
+                </div>
+                <div class="searchBox">
+                    <div class="inputBx">
+                        <p>Peminjam</p>
+                        <select name="nama">
+                            <?php while($data = $stmt->fetch(PDO::FETCH_ASSOC)){?>
+                                <option value="<?php echo $data['id_siswa'] ?>"> <?php echo $data['nisn']." - ".$data['nama'] ?></option>
+                            <?php } $stmt->closeCursor(); $con->destroyConnection(); ?>
+                        </select>
+                    </div>
+                    <div class="inputBx">
+                        <p>Buku</p>
+                        <input type="text">
+                    </div>
+                    <div class="inputBx">
+                        <p>Peminjaman</p>
+                        <input type="date">
+                    </div>
+                    <div class="inputBx">
+                        <p>Pengembalian</p>
+                        <input type="date">
+                    </div>
+                    <div class="inputBx">
+                        <p class="white">_</p>
+                        <input type="submit" value="Entry" name="send">
+                    </div>
+                </div>
             </div>
-            <div class="searchBox">
-                <div class="inputBx">
-                    <p>Peminjam</p>
-                    <select name="nama">
-                        <?php while($data = mysqli_fetch_assoc($execute)){?>
-                            <option value="<?php echo $data['id_siswa'] ?>"> <?php echo $data['nisn']." - ".$data['nama'] ?></option>
-                        <?php } ?>
-                    </select>
-                </div>
-                <div class="inputBx">
-                    <p>Buku</p>
-                    <input type="text">
-                </div>
-                <div class="inputBx">
-                    <p>Peminjaman</p>
-                    <input type="date">
-                </div>
-                <div class="inputBx">
-                    <p>Pengembalian</p>
-                    <input type="date">
-                </div>
-                <div class="inputBx">
-                    <p class="white">_</p>
-                    <input type="submit" value="Entry">
-                </div>
-            </div>
-        </div>
-    </div>
+        </div>s
+    </form>
 </body>
 </html>
