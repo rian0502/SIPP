@@ -12,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIPP</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
     <header>
@@ -28,7 +28,7 @@
     <form action="pinjaman.php" method="post">
         <div class="banner">
             <div class="bg">
-                <img src="bg5.jpg" class="cover" alt="">
+                <img src="assets/image/bg5.jpg" class="cover" alt="">
                 <div class="content">
                     <h2>Sistem Perpustakaan</h2>
                     <a href="daftarBuku.html" class="btn">Daftar Buku</a>

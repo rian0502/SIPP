@@ -5,8 +5,6 @@ $stmt = $con->getKoneksi()->prepare("SELECT id_pinjam, borrow_book, return_book,
                                                FROM siswa as s, buku as b, peminjaman as p
                                                WHERE p.id_buku = b.id_buku AND s.id_siswa = p.id_siswa");
 $stmt->execute();
-
-
 ?>
 
 <!doctype html>
