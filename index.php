@@ -3,6 +3,8 @@
     $con = new Connection();
     $stmt = $con->getKoneksi()->prepare("SELECT * FROM siswa");
     $stmt->execute();
+    $listbook = $con->getKoneksi()->prepare("SELECT id_buku, judul FROM buku");
+    $listbook->execute();
 ?>
 
 <!DOCTYPE html>
@@ -39,12 +41,16 @@
                         <select name="siswa">
                             <?php while($data = $stmt->fetch(PDO::FETCH_ASSOC)){?>
                                 <option value="<?php echo $data['id_siswa'] ?>"> <?php echo $data['nisn']." - ".$data['nama'] ?></option>
-                            <?php } $stmt->closeCursor(); $con->destroyConnection(); ?>
+                            <?php } $stmt->closeCursor();?>
                         </select>
                     </div>
                     <div class="inputBx">
                         <p>Buku</p>
-                        <input type="text" name="buku" required>
+                        <select name="buku">
+                            <?php while($row = $listbook->fetch(PDO::FETCH_ASSOC)){?>
+                                <option value="<?php echo $row['id_buku'] ?>"> <?php echo $row['judul'] ?></option>
+                            <?php } $listbook->closeCursor(); $con->destroyConnection(); ?>
+                        </select>
                     </div>
                     <div class="inputBx">
                         <p>Peminjaman</p>
