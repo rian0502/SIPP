@@ -1,9 +1,17 @@
 <?php
 require_once "config.php";
+require_once "check_data.php";
+
 $con = new Connection();
+$maxShow = 5;
+$sumData = Check::checkData();
+$maxPage = ceil($sumData / $maxShow);
+$halAktif = (isset($_GET['page'])) ? (int) $_GET['page'] : 1;
+$startData = ($maxShow * $halAktif) - $maxShow;
 $stmt = $con->getKoneksi()->prepare("SELECT id_pinjam, borrow_book, return_book, s.nama, b.judul 
                                                FROM siswa as s, buku as b, peminjaman as p
-                                               WHERE p.id_buku = b.id_buku AND s.id_siswa = p.id_siswa");
+                                               WHERE p.id_buku = b.id_buku AND s.id_siswa = p.id_siswa ORDER BY id_pinjam DESC 
+                                               LIMIT $startData,$maxShow");
 $stmt->execute();
 ?>
 
@@ -43,7 +51,7 @@ $stmt->execute();
                         <tbody>
                         <?php
                             $index = 1;
-                        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
+                        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
                             <tr>
                                 <td><?php echo $index ?></td>
                                 <td><?php echo $row['nama'] ?></td>
@@ -54,10 +62,13 @@ $stmt->execute();
                                     <a href="hapus_peminjaman.php?id=<?php echo $row['id_pinjam'] ?>" class="btn btn-sm btn-danger">HAPUS</a>
                                 </td>
                             </tr>
-                        <?php $index++; } ?>
+                        <?php $index++; endwhile; ?>
                         </tbody>
                     </table>
                 </div>
+                <?php for ($i = 1 ; $i <= $maxPage ; $i++) : ?>
+                    <a href="?page=<?php echo $i  ?>"> <?php echo $i ?> </a>
+                <?php endfor; ?>
             </div>
         </div>
     </div>
