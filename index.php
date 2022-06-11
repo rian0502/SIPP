@@ -1,11 +1,16 @@
 <?php
-    require_once "config.php";
+session_start();
+require_once "config.php";
+if (!isset($_SESSION['login'])){
+    header("Location: login.html");
+}else{
     $con = new Connection();
     $stmt = $con->getKoneksi()->prepare("SELECT * FROM siswa");
     $stmt->execute();
     $listbook = $con->getKoneksi()->prepare("SELECT id_buku, judul FROM buku");
     $listbook->execute();
-?>0-
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
