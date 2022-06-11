@@ -59,13 +59,20 @@ $stmt->execute();
                                 <td><?php echo $row['borrow_book'] ?></td>
                                 <td><?php echo $row['return_book'] ?></td>
                                 <td class="text-center">
-                                    <a href="hapus_peminjaman.php?id=<?php echo $row['id_pinjam'] ?>" class="btn btn-sm btn-danger">HAPUS</a>
+                                    <a href="update_peminjaman.phhp?id=<?php echo $row['id_pinjam'] ?>" class="btn btn-sm btn-primary">Update</a>
+                                    <a href="hapus_peminjaman.php?id=<?php echo $row['id_pinjam'] ?>" class="btn btn-sm btn-danger">Hapus</a>
                                 </td>
                             </tr>
                         <?php $index++; endwhile; ?>
                         </tbody>
                     </table>
                 </div>
+
+                <select name="hal" id="hal">
+                <?php for ($i = 1 ; $i <= $maxPage ; $i++) : ?>
+                   <option value="<?php 1 ?>"><?php echo $i ?></option>
+                <?php endfor; ?>
+                </select>
                 <?php for ($i = 1 ; $i <= $maxPage ; $i++) : ?>
                     <a href="?page=<?php echo $i  ?>"> <?php echo $i ?> </a>
                 <?php endfor; ?>

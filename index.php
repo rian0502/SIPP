@@ -5,8 +5,7 @@
     $stmt->execute();
     $listbook = $con->getKoneksi()->prepare("SELECT id_buku, judul FROM buku");
     $listbook->execute();
-?>
-
+?>0-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,7 +65,7 @@
                     </div>
                 </div>
             </div>
-        </div>s
+        </div>
     </form>
 </body>
 </html>
