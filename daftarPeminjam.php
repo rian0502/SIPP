@@ -1,18 +1,22 @@
 <?php
-require_once "config.php";
-require_once "check_data.php";
-
-$con = new Connection();
-$maxShow = 5;
-$sumData = Check::checkData();
-$maxPage = ceil($sumData / $maxShow);
-$halAktif = (isset($_GET['page'])) ? (int) $_GET['page'] : 1;
-$startData = ($maxShow * $halAktif) - $maxShow;
-$stmt = $con->getKoneksi()->prepare("SELECT id_pinjam, borrow_book, return_book, s.nama, b.judul 
+    session_start();
+    if (!isset($_SESSION['login'])){
+        header("Location: login.html");
+    }else{
+        require_once "config.php";
+        require_once "check_data.php";
+        $con = new Connection();
+        $maxShow = 5;
+        $sumData = Check::checkData();
+        $maxPage = ceil($sumData / $maxShow);
+        $halAktif = (isset($_GET['page'])) ? (int) $_GET['page'] : 1;
+        $startData = ($maxShow * $halAktif) - $maxShow;
+        $stmt = $con->getKoneksi()->prepare("SELECT id_pinjam, borrow_book, return_book, s.nama, b.judul 
                                                FROM siswa as s, buku as b, peminjaman as p
-                                               WHERE p.id_buku = b.id_buku AND s.id_siswa = p.id_siswa ORDER BY id_pinjam DESC 
-                                               LIMIT $startData,$maxShow");
-$stmt->execute();
+                                               WHERE p.id_buku = b.id_buku AND s.id_siswa = p.id_siswa ORDER BY id_pinjam 
+                                               DESC LIMIT $startData,$maxShow");
+        $stmt->execute();
+    }
 ?>
 
 <!doctype html>
@@ -67,12 +71,6 @@ $stmt->execute();
                         </tbody>
                     </table>
                 </div>
-
-                <select name="hal" id="hal">
-                <?php for ($i = 1 ; $i <= $maxPage ; $i++) : ?>
-                   <option value="<?php 1 ?>"><?php echo $i ?></option>
-                <?php endfor; ?>
-                </select>
                 <?php for ($i = 1 ; $i <= $maxPage ; $i++) : ?>
                     <a href="?page=<?php echo $i  ?>"> <?php echo $i ?> </a>
                 <?php endfor; ?>

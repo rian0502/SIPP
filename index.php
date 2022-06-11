@@ -27,7 +27,7 @@ if (!isset($_SESSION['login'])){
             <ul class="navigation">
                 <li><a href="#">Home</a></li>
                 <li><a href="daftarPeminjam.php">Daftar Peminjam</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="logout.php">Keluar</a></li>
             </ul>
         </div>
     </header>
