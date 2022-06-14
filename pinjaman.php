@@ -22,4 +22,6 @@ if (isset($_POST['send'])) {
     } else {
         echo '<script type="text/javascript"> alert("Peminjaman Gagal");window.location.href="daftarPeminjam.php"; </script>';
     }
+}else{
+    header("Location: index.php");
 }
