@@ -1,4 +1,8 @@
 <?php
+session_start();
+if (!isset($_SESSION['login'])){
+    header("Location: login.html");
+}else{
     require_once "config.php";
     if (isset($_GET['id'])){
         $conn = new Connection();
@@ -12,6 +16,7 @@
     }else{
         header("Location: daftarPeminjam.php");
     }
+}
 ?>
 <!doctype html>
 <html lang="en">
