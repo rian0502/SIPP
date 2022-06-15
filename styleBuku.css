@@ -10,7 +10,7 @@ body
     width: 1200px;
     min-height: 50px;
     background: #fff;
-    margin: 70px auto 0;
+    margin: 80px auto 0;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -46,5 +46,33 @@ body
     left: 10px;
     bottom: 10px;
     right: 10px;
-    background: rgba(0,0,0,0);
+    background: rgba(0,0,0,.8);
+    transform: scaleY(0);
+    transition: transform .5s;
+}
+.container .box:hover .details
+{
+    transform: scaleY(1);
+}
+.container .box .details .content
+{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    padding: 15px;
+    color: #fff;
+}
+.container .box .details .content h2
+{
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    color: #ff0;
+}
+.container .box .details .content p
+{
+    margin: 20px 0 0;
+    padding: 0;
+    
 }
