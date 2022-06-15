@@ -63,7 +63,7 @@
                                 <td><?php echo $row['borrow_book'] ?></td>
                                 <td><?php echo $row['return_book'] ?></td>
                                 <td class="text-center">
-                                    <a href="update_peminjaman.phhp?id=<?php echo $row['id_pinjam'] ?>" class="btn btn-sm btn-primary">Update</a>
+                                    <a href="update_peminjaman.php?id=<?php echo $row['id_pinjam'] ?>" class="btn btn-sm btn-primary">Update</a>
                                     <a href="hapus_peminjaman.php?id=<?php echo $row['id_pinjam'] ?>" class="btn btn-sm btn-danger">Hapus</a>
                                 </td>
                             </tr>
