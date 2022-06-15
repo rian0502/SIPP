@@ -38,7 +38,7 @@ if (!isset($_SESSION['login'])){
                 <img src="assets/image/bg5.jpg" class="cover" alt="">
                 <div class="content">
                     <h2>Sistem Perpustakaan</h2>
-                    <a href="daftarBuku.html" class="btn">Daftar Buku</a>
+                    <a href="daftar_buku.html" class="btn">Daftar Buku</a>
                 </div>
                 <div class="searchBox">
                     <div class="inputBx">
