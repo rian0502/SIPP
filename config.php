@@ -1,9 +1,9 @@
 <?php
 class Connection{
     private $USERNAME = "root";
-    private $PASSWORD = "";
+    private $PASSWORD = "rian";
     private $HOST = "localhost";
-    private $DATABASE = "web_database";
+    private $DATABASE = "perpustakaan";
     private ?PDO $koneksi;
 
     public function __construct(){
