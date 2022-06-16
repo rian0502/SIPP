@@ -1,7 +1,7 @@
 <?php
 class Connection{
     private $USERNAME = "root";
-    private $PASSWORD = "rian";
+    private $PASSWORD = "";
     private $HOST = "localhost";
     private $DATABASE = "perpustakaan";
     private ?PDO $koneksi;
