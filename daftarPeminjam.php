@@ -72,18 +72,14 @@
                     </table>
                 </div>
                 <nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-end">
-    <li class="page-item disabled">
-      <a class="page-link" href="#" tabindex="-1">Previous</a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#">Next</a>
-    </li>
-  </ul>
-</nav>
+                    <ul class="pagination justify-content-end">
+                        <li class="page-item"><a class="page-link" href="?page=<?php if ($halAktif - 1 < 1 ) {$halAktif =1;}else{$halAktif -= 1;} echo $halAktif ?>">Previous</a></li>
+                        <?php for ($i = 1 ; $i <= $maxPage ; $i++) : ?>
+                            <li class="page-item"><a class="page-link" href="?page=<?php echo $i  ?>"> <?php echo $i ?></a></li>
+                        <?php endfor; ?>
+                        <li class="page-item"><a class="page-link" href="?page=<?php if ($halAktif + 1 > $maxPage ) {$halAktif =$maxPage;}else{$halAktif += 1;} echo $halAktif ?>">Next</a></li>
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>
