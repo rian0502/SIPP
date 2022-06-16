@@ -1,4 +1,15 @@
 <?php
+require_once "config.php";
+$conn = new Connection();
+$stmt = $conn->getKoneksi()->prepare("select date_format(borrow_book, '%M') as bulan,COUNT(borrow_book) as 
+                                                    jumlah from peminjaman group by date_format(borrow_book, '%M');");
+$stmt->execute();
+$month = array();
+$data = array();
+while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+    $month[] = $row['bulan'];
+    $data[] = $row['jumlah'];
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -11,18 +22,18 @@
     <script type="text/javascript" src="assets/script/Chart.js"></script>
 </head>
 <body>
-<div style="width: 500px;height: 500px">
-    <canvas id="myChart"></canvas>
+<div style="width: 700px;height: 500px">
+    <canvas id="peminjaman_buku"></canvas>
 </div>
 <script>
-    var ctx = document.getElementById("myChart").getContext('2d');
+    var ctx = document.getElementById("peminjaman_buku").getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange","black"],
+            labels: <?php echo json_encode($month) ?>,
             datasets: [{
                 label: 'Banyaknya Peminjaman',
-                data: [12, 19, 3, 23, 2, 3,30],
+                data: <?php echo json_encode($data)?>,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
