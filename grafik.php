@@ -11,7 +11,8 @@
     <script type="text/javascript" src="assets/script/Chart.js"></script>
 </head>
 <body>
-<div style="width: 500px;height: 500px">
+<div style=""
+<div style="width: 1000px;height: 1000px">
     <canvas id="myChart"></canvas>
 </div>
 <script>
