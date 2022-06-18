@@ -44,7 +44,7 @@ if (!isset($_SESSION['login'])){
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Grafik Perpustkaan</title>
     <link rel="stylesheet" href="assets/css/styleGrafik.css">
-    <link rel="icon" type="image/jpg" href="assets/image/logo.jpg">
+    <link rel="icon" type="image/jpg" href="assets/image/logoBuku.png">
     <script type="text/javascript" src="assets/script/Chart.js"></script>
 </head>
 <body>
