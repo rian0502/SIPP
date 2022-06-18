@@ -9,15 +9,10 @@ h3{
 }
 table{
     margin: auto;
-    border-spacing: 50px;
+    border-spacing: 10px;
 }
-.grafik-pinjam{
+.grafik{
     text-align: center;
     width: 600px;
-    height: 750px;
-}
-.grafik-buku{
-    text-align: center;
-    width: 600px;
-    height: 750px;
+
 }
