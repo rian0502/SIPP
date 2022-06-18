@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 if (!isset($_SESSION['login'])){
     header("Location: login.html");
 }else{
@@ -149,7 +149,6 @@ if (!isset($_SESSION['login'])){
                     'rgb(59, 68, 246)',
                     'rgb(117, 52, 34)',
                     'rgb(161, 73, 250)',
-
                 ],
                 borderWidth: 1,
                 hoverOffset: 4

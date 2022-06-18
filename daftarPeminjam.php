@@ -42,7 +42,7 @@
                 </div>
                 <div class="card-body">
                     <a href="index.php" class="btn btn-md btn-success" style="margin-bottom: 10px">Tambah Data</a>
-                    <a href="index.php" class="btn btn-md btn-success" style="margin-bottom: 10px">Grafik Peminjaman</a>
+                    <a href="grafik.php" class="btn btn-md btn-success" style="margin-bottom: 10px">Grafik Peminjaman</a>
                     <table class="table table-bordered" id="myTable">
                         <thead>
                         <tr>
