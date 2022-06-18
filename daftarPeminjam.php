@@ -39,8 +39,7 @@
                     DATA PEMINJAM
                 </div>
                 <div class="card-body">
-                    <a href="index.php" class="btn btn-md btn-success" style="margin-bottom: 10px">TAMBAH
-                        DATA</a>
+                    <a href="index.php" class="btn btn-md btn-success" style="margin-bottom: 10px">Tambah Data</a>
                     <table class="table table-bordered" id="myTable">
                         <thead>
                         <tr>

@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Joan&display=swap');
+
+*{
+    margin: 0px;
+    padding: 0;
+}
+h3{
+    font-family: 'Joan', serif;
+}
+table{
+    margin: auto;
+    border-spacing: 50px;
+}
+.grafik-pinjam{
+    text-align: center;
+    width: 600px;
+    height: 750px;
+}
+.grafik-buku{
+    text-align: center;
+    width: 600px;
+    height: 750px;
+}
